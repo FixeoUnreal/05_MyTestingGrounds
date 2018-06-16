@@ -6,8 +6,6 @@
 #include "BehaviorTree/BTTaskNode.h"
 #include "MyChooseNextWaypoint.generated.h"
 
-class UBehaviorTreeComponent;
-
 /**
  * 
  */
@@ -16,6 +14,13 @@ class MYTESTINGGROUNDS_API UMyChooseNextWaypoint : public UBTTaskNode
 {
 	GENERATED_BODY()
 	
+protected:
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+	struct FBlackboardKeySelector IndexKey;
+
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+	struct FBlackboardKeySelector WaypointKey;
+
 private:
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	
