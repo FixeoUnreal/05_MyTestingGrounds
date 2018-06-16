@@ -4,7 +4,6 @@
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "AIController.h"
-#include "MyTestingGrounds/Public/MyPatrollingGuard.h"
 #include "MyTestingGrounds/Public/MyPatrolRouteComponent.h"
 
 
