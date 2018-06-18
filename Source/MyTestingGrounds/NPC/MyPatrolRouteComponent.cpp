@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "MyTestingGrounds/Public/MyPatrolRouteComponent.h"
+#include "MyPatrolRouteComponent.h"
 
 
 
