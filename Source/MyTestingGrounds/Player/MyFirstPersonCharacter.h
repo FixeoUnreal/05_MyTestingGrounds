@@ -46,6 +46,11 @@ class AMyFirstPersonCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UMotionControllerComponent* L_MotionController;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	TSubclassOf<class AMyGun> GunBlueprint;
+
+private:
+	AMyGun * FP_Gun;
 public:
 	AMyFirstPersonCharacter();
 
