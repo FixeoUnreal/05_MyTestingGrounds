@@ -51,6 +51,8 @@ class AMyFirstPersonCharacter : public ACharacter
 
 private:
 	AMyGun * FP_Gun;
+
+	void OnFire();
 public:
 	AMyFirstPersonCharacter();
 

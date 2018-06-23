@@ -16,6 +16,7 @@
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
+
 //////////////////////////////////////////////////////////////////////////
 // AMyFirstPersonCharacter
 
@@ -85,7 +86,7 @@ void AMyFirstPersonCharacter::BeginPlay()
 	if (!GunBlueprint) { return; }
 	FP_Gun = GetWorld()->SpawnActor<AMyGun>(GunBlueprint);
 	FP_Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
-
+	FP_Gun->AnimInstance = Mesh1P->GetAnimInstance();
 
 	// Show or hide the two versions of the gun based on whether or not we're using motion controllers.
 	if (bUsingMotionControllers)
@@ -97,6 +98,14 @@ void AMyFirstPersonCharacter::BeginPlay()
 	{
 		VR_Gun->SetHiddenInGame(true, true);
 		Mesh1P->SetHiddenInGame(false, true);
+	}
+}
+
+void AMyFirstPersonCharacter::OnFire()
+{
+	if (FP_Gun)
+	{
+		FP_Gun->OnFire();
 	}
 }
 
@@ -113,8 +122,7 @@ void AMyFirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* P
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	// Bind fire event
-	// TODO fix this line
-	//PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AMyFirstPersonCharacter::OnFire);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AMyFirstPersonCharacter::OnFire);
 
 	// Enable touchscreen input
 	EnableTouchscreenMovement(PlayerInputComponent);
