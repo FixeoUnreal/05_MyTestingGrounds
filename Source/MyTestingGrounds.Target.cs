@@ -9,5 +9,11 @@ public class MyTestingGroundsTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		ExtraModuleNames.Add("MyTestingGrounds");
-	}
+
+        //Non-Unity-mode
+        bUseUnityBuild = false;
+
+        //New standard
+        bUsePCHFiles = false;
+    }
 }
