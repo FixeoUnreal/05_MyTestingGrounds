@@ -43,6 +43,11 @@ void AMyMannequin::BeginPlay()
 	Gun = GetWorld()->SpawnActor<AMyGun>(GunBlueprint);
 	Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 	Gun->AnimInstance = Mesh1P->GetAnimInstance();
+
+	if (InputComponent != NULL)
+	{
+		InputComponent->BindAction("Fire", IE_Pressed, this, &AMyMannequin::PullTrigger);
+	}
 }
 
 // Called every frame
@@ -59,7 +64,7 @@ void AMyMannequin::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 }
 
-void AMyMannequin::Fire()
+void AMyMannequin::PullTrigger()
 {
 	Gun->OnFire();
 }

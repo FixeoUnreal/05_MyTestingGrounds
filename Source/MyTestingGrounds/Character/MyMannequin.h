@@ -31,7 +31,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Gameplay")
-	void Fire();
+	void PullTrigger();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<class AMyGun> GunBlueprint;
